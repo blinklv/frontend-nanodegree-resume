@@ -3,7 +3,7 @@
 // Author: blinklv <blinklv@icloud.com>
 // Create Time: 2017-07-14
 // Maintainer: blinklv <blinklv@icloud.com>
-// Last Change: 2017-07-17
+// Last Change: 2017-07-19
 
 (function() {
   var bio = {
@@ -29,7 +29,7 @@
       degree: "Masters",
       majors: ["mathsmatics"],
       dates: 2012,
-      url: "http://www.xaut.edu.cn/“
+      url: "http://www.xaut.edu.cn/"
     }
     ],
     onlineCourses: [
@@ -55,13 +55,30 @@
 
   var projects = {
     "projects": [
+    {
       title: "Portfilo",
       dates: 2017,
       description: "My portfilo",
       images: [
         "https://github.com/blinklv/portfolio/blob/master/readme/desktop.jpg"
       ]
+    }
     ]
   };
+
+  if ( bio.skills.length ) {
+    $("#header").append(HTMLskillsStart);
+    bio.skills.forEach( skill => { $("#skills").append(HTMLskills.replace("%data%", skill)) } );
+
+  }
+
+  for ( let job in work.jobs ) {
+    $("#workExperience").append(HTMLworkStart);
+    
+    $(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work.jobs[job].employer) + HTMLworkTitle.replace("%data%", work.jobs[job].title));
+    $(".work-entry:last").append(HTMLworkDates.replace("%data%", work.jobs[job].dates));
+    $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work.jobs[job].description));
+  }
+
 })();
 
