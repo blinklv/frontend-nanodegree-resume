@@ -3,21 +3,21 @@
 // Author: blinklv <blinklv@icloud.com>
 // Create Time: 2017-07-14
 // Maintainer: blinklv <blinklv@icloud.com>
-// Last Change: 2017-07-19
+// Last Change: 2017-07-20
 
 (function() {
   var bio = {
     name: "Blink Lv",
-    role: "Web Developer",
+    role: "Programmer",
     contacts: {
-      mobile: "650-555-5555",
+      mobile: "086-18665853855",
       email: "blinklv@icloud.com",
       github: "blinklv",
       twitter: "@blinklv",
-      location: "ShenZhen"
+      location: "Shenzhen, Guangdong"
     },
-    welcomeMessage: "Who Are You?",
-    skills: ["programming", "mathsmatics", "painting"],
+    welcomeMessage: "Who are you? Am I alone?",
+    skills: ["programming", "mathematics", "painting"],
     bioPic: "images/fry.jpg"
   };
 
@@ -27,7 +27,7 @@
       name: "Xi'an University of technology",
       city: "Xi'an",
       degree: "Masters",
-      majors: ["mathsmatics"],
+      majors: ["mathematics", "CS"],
       dates: 2012,
       url: "http://www.xaut.edu.cn/"
     }
@@ -48,7 +48,12 @@
       employer: "Tencent",
       title: "Backend Enginner",
       dates: 2016,
-      description: "Nothing"
+      description: `
+          My first job. The environment of the office is good, and the salary is ok. But the workload
+          is heavy, I need to work late every day. Fortunately, there are no strict work hours, I can
+          go to the company late. Online servers often meet problems, sometimes I have to spend
+          my weekend time fixing it, that's too bad.
+          `
     }
     ]
   };
@@ -58,13 +63,27 @@
     {
       title: "Portfilo",
       dates: 2017,
-      description: "My portfilo",
+      description: `A portfolio demo used to show pictures, it's a responsive web page.  If you want to change
+          it for yourself, you need to replace the contents of the img directory (include the description
+          directory). The logo.jpg picture will become your logo on the header, you also need to change the
+          index.pug file a little bit to make the information under the logo meet your requirements. The site
+          looks like below (only in desktop).`,
       images: [
         "https://github.com/blinklv/portfolio/blob/master/readme/desktop.jpg"
       ]
     }
     ]
   };
+
+  $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
+  $("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
+
+  for ( let contact in bio.contacts ) {
+      $("#topContacts").append(HTMLcontactGeneric.replace("%contact%", contact).replace("%data%", bio.contacts[contact]));
+  }
+
+  $("#header").append(HTMLbioPic.replace("%data%", bio.bioPic));
+  $("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
 
   if ( bio.skills.length ) {
     $("#header").append(HTMLskillsStart);
