@@ -5,9 +5,15 @@
 // Maintainer: blinklv <blinklv@icloud.com>
 // Last Change: 2017-07-20
 
+
+function inName(name) {
+  var names = name.split(" ");
+  return names[0].charAt(0).toUpperCase() + names[0].slice(1) + " " + names[1].toUpperCase();
+}
+
 (function() {
   var bio = {
-    name: "Blink Lv",
+    name: "blink lv",
     role: "Programmer",
     contacts: {
       mobile: "086-18665853855",
@@ -45,9 +51,15 @@
   var work = {
     jobs: [
     {
+      employer: "KFC",
+      title: "Delivery Boy",
+      dates: "2014 - 2015",
+      description: "Who moved my cheese cheesy feet cauliflower cheese. Queso taleggio when the cheese comes out everybody's happy airedale ricotta cheese and wine paneer camembert de normandie. Swiss mozzarella cheese slices feta fromage frais airedale swiss cheesecake. Hard cheese blue castello halloumi parmesan say cheese stinking bishop jarlsberg."
+    },
+    {
       employer: "Tencent",
       title: "Backend Enginner",
-      dates: 2016,
+      dates: "2016 - today",
       description: `
           My first job. The environment of the office is good, and the salary is ok. But the workload
           is heavy, I need to work late every day. Fortunately, there are no strict work hours, I can
@@ -75,6 +87,10 @@
     ]
   };
 
+  $(document).click(function(loc) {
+    logClicks(loc.pageX, loc.pageY);
+  });
+
   $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
   $("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
 
@@ -99,5 +115,6 @@
     $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work.jobs[job].description));
   }
 
+  $("#main").append(internationalizeButton);
 })();
 
