@@ -53,12 +53,7 @@ var work = {
         employer: "Tencent",
         title: "Backend Enginner",
         dates: "2016 - today",
-        description: `
-            My first job. The environment of the office is good, and the salary is ok. But the workload
-            is heavy, I need to work late every day. Fortunately, there are no strict work hours, I can
-            go to the company late. Online servers often meet problems, sometimes I have to spend
-            my weekend time fixing it, that's too bad.
-            `
+        description: "My first job. The environment of the office is good, and the salary is ok. But the workload is heavy, I need to work late every day. Fortunately, there are no strict work hours, I can go to the company late. Online servers often meet problems, sometimes I have to spend my weekend time fixing it, that's too bad."
     }
     ]
 };
@@ -68,11 +63,7 @@ var projects = {
     {
         title: "Portfilo",
         dates: 2017,
-        description: `A portfolio demo used to show pictures, it's a responsive web page.  If you want to change
-            it for yourself, you need to replace the contents of the img directory (include the description
-                    directory). The logo.jpg picture will become your logo on the header, you also need to change the
-            index.pug file a little bit to make the information under the logo meet your requirements. The site
-            looks like below (only in desktop).`,
+        description: "A portfolio demo used to show pictures, it's a responsive web page.  If you want to change it for yourself, you need to replace the contents of the img directory (include the description directory). The logo.jpg picture will become your logo on the header, you also need to change the index.pug file a little bit to make the information under the logo meet your requirements. The site looks like below (only in desktop).",
         images: [
             "images/desktop_upper.jpg",
             "images/desktop_lower.jpg"
@@ -86,9 +77,11 @@ bio.display = function() {
     $("#header").prepend(HTMLheaderName.replace("%data%", this.name));
 
     var contacts = this.contacts;
-    for ( let contact in contacts ) {
-        $("#topContacts").append(HTMLcontactGeneric.replace("%contact%", contact).replace("%data%", contacts[contact]));
-        $("#footerContacts").append(HTMLcontactGeneric.replace("%contact%", contact).replace("%data%", contacts[contact]));
+    for ( var contact in contacts ) {
+        if (contacts.hasOwnProperty(contact)) {
+            $("#topContacts").append(HTMLcontactGeneric.replace("%contact%", contact).replace("%data%", contacts[contact]));
+            $("#footerContacts").append(HTMLcontactGeneric.replace("%contact%", contact).replace("%data%", contacts[contact]));
+        }
     }
 
     $("#header").append(HTMLbioPic.replace("%data%", this.bioPic));
@@ -97,10 +90,9 @@ bio.display = function() {
     var skills = this.skills;
     if ( skills.length ) {
         $("#header").append(HTMLskillsStart);
-        skills.forEach( skill => { $("#skills").append(HTMLskills.replace("%data%", skill)) } );
-
+        skills.forEach( skill => { $("#skills").append(HTMLskills.replace("%data%", skill)); } );
     }
-}
+};
 
 work.display = function() {
     this.jobs.forEach( (job) => {
@@ -119,7 +111,7 @@ projects.display = function() {
         $(".project-entry:last").append(HTMLprojectDates.replace("%data%", project.dates));
         $(".project-entry:last").append(HTMLprojectDescription.replace("%data%", project.description));
 
-        project.images.forEach(image => { $(".project-entry:last").append(HTMLprojectImage.replace("%data%", image)) } );
+        project.images.forEach(image => { $(".project-entry:last").append(HTMLprojectImage.replace("%data%", image)); } );
     });
 };
 
