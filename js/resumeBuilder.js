@@ -86,7 +86,7 @@ bio.display = function() {
         }
     }
 
-    $("#header").append(HTMLbiopic.replace("%data%", this.biopic));
+    $("#header").append(HTMLbioPic.replace("%data%", this.biopic));
     $("#header").append(HTMLwelcomeMsg.replace("%data%", this.welcomeMessage));
 
     var skills = this.skills;
