@@ -3,7 +3,7 @@
 // Author: blinklv <blinklv@icloud.com>
 // Create Time: 2017-07-14
 // Maintainer: blinklv <blinklv@icloud.com>
-// Last Change: 2017-07-27
+// Last Change: 2017-07-31
 
 var bio = {
     name: "Blink Lv",
@@ -17,7 +17,7 @@ var bio = {
     },
     welcomeMessage: "Who are you? Am I alone?",
     skills: ["programming", "mathematics", "painting"],
-    bioPic: "images/fry.jpg"
+    biopic: "images/fry.jpg"
 };
 
 var education = {
@@ -35,7 +35,7 @@ var education = {
     {
         title: "JavaScript Crash Course",
         school: "Udacity",
-        dates: 2016,
+        dates: "2016",
         url: "http://www.udacity.com/course/ud804"
     }
     ]
@@ -47,12 +47,14 @@ var work = {
         employer: "KFC",
         title: "Delivery Boy",
         dates: "2014 - 2015",
+        location: "Xi'an",
         description: "Who moved my cheese cheesy feet cauliflower cheese. Queso taleggio when the cheese comes out everybody's happy airedale ricotta cheese and wine paneer camembert de normandie. Swiss mozzarella cheese slices feta fromage frais airedale swiss cheesecake. Hard cheese blue castello halloumi parmesan say cheese stinking bishop jarlsberg."
     },
     {
         employer: "Tencent",
         title: "Backend Enginner",
         dates: "2016 - today",
+        location: "Shenzhen",
         description: "My first job. The environment of the office is good, and the salary is ok. But the workload is heavy, I need to work late every day. Fortunately, there are no strict work hours, I can go to the company late. Online servers often meet problems, sometimes I have to spend my weekend time fixing it, that's too bad."
     }
     ]
@@ -62,7 +64,7 @@ var projects = {
     "projects": [
     {
         title: "Portfilo",
-        dates: 2017,
+        dates: "2017",
         description: "A portfolio demo used to show pictures, it's a responsive web page.  If you want to change it for yourself, you need to replace the contents of the img directory (include the description directory). The logo.jpg picture will become your logo on the header, you also need to change the index.pug file a little bit to make the information under the logo meet your requirements. The site looks like below (only in desktop).",
         images: [
             "images/desktop_upper.jpg",
@@ -84,7 +86,7 @@ bio.display = function() {
         }
     }
 
-    $("#header").append(HTMLbioPic.replace("%data%", this.bioPic));
+    $("#header").append(HTMLbiopic.replace("%data%", this.biopic));
     $("#header").append(HTMLwelcomeMsg.replace("%data%", this.welcomeMessage));
 
     var skills = this.skills;
@@ -100,6 +102,7 @@ work.display = function() {
 
         $(".work-entry:last").append(HTMLworkEmployer.replace("%data%", job.employer) + HTMLworkTitle.replace("%data%", job.title));
         $(".work-entry:last").append(HTMLworkDates.replace("%data%", job.dates));
+        $(".work-entry:last").append(HTMLworkLocation.replace("%data%", job.location));
         $(".work-entry:last").append(HTMLworkDescription.replace("%data%", job.description));
     });
 };
