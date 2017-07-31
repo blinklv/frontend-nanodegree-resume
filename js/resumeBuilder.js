@@ -7,13 +7,13 @@
 
 var bio = {
     name: "Blink Lv",
-    role: "Programmer",
+    role: "A Free Programmer",
     contacts: {
         mobile: "086-18665853855",
         email: "blinklv@icloud.com",
         github: "blinklv",
         twitter: "@blinklv",
-        location: "Shenzhen shi"
+        location: "Shenzhen"
     },
     welcomeMessage: "Who are you? Am I alone?",
     skills: ["programming", "mathematics", "painting"],
@@ -35,7 +35,7 @@ var education = {
     {
         title: "JavaScript Crash Course",
         school: "Udacity",
-        dates: "2016",
+        dates: "2016 - 2017",
         url: "http://www.udacity.com/course/ud804"
     }
     ]
@@ -53,7 +53,7 @@ var work = {
     {
         employer: "Tencent",
         title: "Backend Enginner",
-        dates: "2016 - today",
+        dates: "in progress",
         location: "Shenzhen",
         description: "My first job. The environment of the office is good, and the salary is ok. But the workload is heavy, I need to work late every day. Fortunately, there are no strict work hours, I can go to the company late. Online servers often meet problems, sometimes I have to spend my weekend time fixing it, that's too bad."
     }
@@ -64,7 +64,7 @@ var projects = {
     "projects": [
     {
         title: "Portfilo",
-        dates: "2017",
+        dates: "2017.03 - 2017.04",
         description: "A portfolio demo used to show pictures, it's a responsive web page.  If you want to change it for yourself, you need to replace the contents of the img directory (include the description directory). The logo.jpg picture will become your logo on the header, you also need to change the index.pug file a little bit to make the information under the logo meet your requirements. The site looks like below (only in desktop).",
         images: [
             "images/desktop_upper.jpg",
@@ -77,6 +77,13 @@ var projects = {
 bio.display = function() {
     $("#header").prepend(HTMLheaderRole.replace("%data%", this.role));
     $("#header").prepend(HTMLheaderName.replace("%data%", this.name));
+
+    var name = $("#header").children().first();
+    name.addClass("light text-center");
+    name.css("text-transform", "uppercase");
+
+    var role = name.next();
+    role.addClass("light text-center");
 
     var contacts = this.contacts;
     for ( var contact in contacts ) {

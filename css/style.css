@@ -129,7 +129,17 @@ a {
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: black;
+}
+
+.light {
+  text-shadow: 0 0 11px #fffdfd;
+  color: white;
+}
+
+.text-center {
+  display: block;
+  text-align: center;
 }
 
 .flex-box {
@@ -158,9 +168,12 @@ ul {
 
 .biopic {
   float: left;
-  padding: 10px;
+  padding: 0px;
+  margin: 10px;
   width: 200px;
+  border-radius: 5%;
   display: none;
+  box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 1);
 }
 
 img {
